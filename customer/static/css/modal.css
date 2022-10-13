@@ -158,6 +158,24 @@ box-shadow: -5px 0px 6px 0px rgba(82,82,82,0.52);
               padding-right:50px;}
 }
 
+@media  screen and (max-width: 767px) and (min-width: 576px){
+	#sellermodal{margin-left:20%;
+			  margin-right:20%;}
+  
+	#forgot-password{margin-left:20%;
+			  margin-right:20%;}
+  } 
+
+  @media screen and (min-width: 768px) {
+	
+	#sellermodal .modal-dialog  {width:500px;}
+  
+  #forgot-password .modal-dialog{width:500px;}
+  
+  .modal-body{padding-left:50px;
+              padding-right:50px;}
+}
+
 
 .modal-body{
     background-color: whitesmoke;

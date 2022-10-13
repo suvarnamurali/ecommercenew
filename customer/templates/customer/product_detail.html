@@ -370,7 +370,8 @@
 											
 											<div class="review-form">
 												<div class="form-container">
-													<form class="cnt-form">
+													<form class="cnt-form" method="post">
+														{% csrf_token %}
 														
 														<div class="row">
 															<div class="col-sm-6">
@@ -409,7 +410,8 @@
 									<div class="product-tag">
 										
 										<h4 class="title">Product Tags</h4>
-										<form class="form-inline form-cnt">
+										<form class="form-inline form-cnt" method="post">
+											{% csrf_token %}
 											<div class="form-container">
 									
 												<div class="form-group">
@@ -423,7 +425,8 @@
 											</div><!-- /.form-container -->
 										</form><!-- /.form-cnt -->
 
-										<form class="form-inline form-cnt">
+										<form class="form-inline form-cnt" method="post">
+											{% csrf_token %}
 											<div class="form-group">
 												<label>&nbsp;</label>
 												<span class="text col-md-offset-3">Use spaces to separate tags. Use single quotes (') for phrases.</span>

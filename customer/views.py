@@ -13,3 +13,4 @@ def my_order(request):
 
 def product_detail(request):
     return render(request,'customer/product_detail.html')
+
