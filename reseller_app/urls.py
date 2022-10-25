@@ -12,6 +12,8 @@ urlpatterns = [
     path('recent-orders',views.recent_orders, name='recent_orders'),
     path('cancelled-order',views.cancelled_orders, name='cancelled_order'),
     path('history_order',views.order_history, name='order_history'),
-    path('password-change',views.change_password, name='change_password')
+    path('password-change',views.change_password, name='change_password'),
+    path('sellerac',views.seller_ac, name='seller-acnt'),
+    path('editac',views.edit_ac, name='edit-acc')
     
 ]

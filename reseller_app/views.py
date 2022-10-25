@@ -29,6 +29,12 @@ def order_history(request):
 def change_password(request):
     return render(request,'reseller_app/change_password.html')
 
+def seller_ac(request):
+    return render(request,'reseller_app/seller_account.html')
+
+def edit_ac(request):
+    return render(request,'reseller_app/s_edit.html')
+
  
  
 

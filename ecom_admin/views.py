@@ -17,6 +17,9 @@ def registered_resellers(request):
 def change_password(request):
     return render(request,'ecom_admin/change_password.html')
 
+def admin_login(request):
+    return render(request,'ecom_admin/adminlogin.html')
+
 
 
 
