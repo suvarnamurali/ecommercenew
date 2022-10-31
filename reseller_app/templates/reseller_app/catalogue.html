@@ -9,27 +9,25 @@
     </div>
 </div>
 <div class="row">
-    
+    {% for product in products %}
     <div class="col-md-4 p-2">
         <div class="card" style="width: 18rem; min-height: 430px;max-height: 420px;">
-            <img src="https://sparepartsonline.in/storage/2018/08/Vivo-Y83-4GB-32gb-mobile-phone.jpg" class="card-img-top" alt="..." style="max-height: 200px;width: 100%;min-height: 100px;">
+            <img src="{{ product.p_image.url }}" class="card-img-top" alt="..." style="max-height: 200px;width: 100%;min-height: 100px;">
             <div class="card-body" style="max-height: 150px;overflow: hidden;">
-                <h5 class="card-title text-center fw-bold">Vivo V7+</h5>
-                <p class="card-text">Samsung Galaxy M53 5G (Mystique Green, 6GB, 128GB Storage) | 108MP | sAmoled+ 120Hz | 12GB RAM with RAM Plus | Travel Adapter to be Purchased Separately
-
-
-                    Samsung Galaxy M53 5G (Mystique Green, 6GB, 128GB Storage) | 108MP | sAmoled+ 120Hz | 12GB RAM with RAM Plus | Travel Adapter to be Purchased Separately lorem
+                <h5 class="card-title text-center fw-bold">{{product.p_name}}</h5>
+                <p class="card-text">{{product.p_details}}
                 </p>
                 
             </div>
             <div class="card-footer">
                 <a href="#" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger">Out of stock</a>
+                <a href="#" class="btn btn-danger">{{product.p_stock}}</a>
             </div>
         </div>
     </div>
+    {% endfor %}
   
-    <div class="col-md-4 p-2">
+    <!-- <div class="col-md-4 p-2">
         <div class="card" style="width: 18rem; min-height: 430px;max-height: 420px;">
             <img src="https://sparepartsonline.in/storage/2018/08/Vivo-Y83-4GB-32gb-mobile-phone.jpg" class="card-img-top" alt="..." style="max-height: 200px;width: 100%;min-height: 100px;">
             <div class="card-body" style="max-height: 150px;overflow: hidden;">
@@ -79,7 +77,7 @@
                 <a href="#" class="btn btn-primary">Details</a>
             </div>
         </div>
-    </div>
+    </div> -->
       
 </div>
 
