@@ -1,6 +1,4 @@
- 
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect
 from customer.models import Customer
 from reseller_app.models import Reseller
 
@@ -32,7 +30,7 @@ def customer_home(request):
                  
             except:
                 error_msg = 'Invalid Username Or Password'
-                return render(request,'customer/customer_home.html',{'error_msg':error_msg})#customer end
+                return render(request,'customer/customer_home.html',{'error_msg':error_msg})#customer end login and signup completed
      
    
         if 's_signup' in request.POST:
@@ -62,10 +60,21 @@ def customer_home(request):
                  
             except:
                 error_msg = 'Invalid Username Or Password'
-                return render(request,'reseller/reseller_home.html',{'error_msg':error_msg})
+                return render(request,'reseller/reseller_home.html',{'error_msg':error_msg}) #reseller end 
         
 
     return render(request,'customer/customer_home.html',{'status':status})
+
+def logout(request):
+        del request.session['c_id']
+        request.session.flush()
+        return redirect('customer:home')
+
+def log_out(request):
+        del request.session['s_id']
+        request.session.flush()
+        return redirect('customer:home')
+    
 
 def my_cart(request):
     return render(request,'customer/my_cart.html')

@@ -1,9 +1,12 @@
 from django.shortcuts import render
 
+from reseller_app.models import Reseller
+
 # Create your views here.
 
 def reseller_home(request):
-    return render(request,'reseller_app/reseller_home.html')
+    reseller = Reseller.objects.get(id = request.session['s_id'])
+    return render(request,'reseller_app/reseller_home.html',{'seller_data':reseller})
 
 def product_catalogue(request):
     return render(request,'reseller_app/catalogue.html')

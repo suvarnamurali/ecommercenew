@@ -11,6 +11,8 @@ urlpatterns = [
     path('myaccount',views.my_ac, name='my-account'),
     path('edit',views.edit_form, name='my-edit'),
     path('add_ress',views.c_address, name='address_c'),
-    path('pay_ment',views.c_payment, name='payment_c')
+    path('pay_ment',views.c_payment, name='payment_c'),
+    path('log_out',views.logout,name='log_out'),
+    path('logout_s',views.log_out,name='logout_s')
     
 ]
