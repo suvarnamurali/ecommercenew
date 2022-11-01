@@ -82,7 +82,9 @@
 										
 										<td class="cart-product-sub-total" id="st"><span
 												class="cart-sub-total-price"></span> Rs:{{item.product.p_price}}</td>
-										<td class="cart-product-grand-total"><span	class="cart-grand-total-price"  id="total"> </span>rs:{{item.tt_Price}} </td>																			
+										{%for i in tp%}
+										<td class="cart-product-grand-total"><span	class="cart-grand-total-price"  id="total"> </span>rs{{i.}} </td>		
+										{%endfor%}																	
 									</tr>															
 																	
 									{% endfor %}

@@ -5,7 +5,7 @@ from django.shortcuts import render,redirect
 
 from customer.models import AddCart, Customer
 from reseller_app.models import Product, Reseller
-# from django.db.models import F,Sum
+from django.db.models import F
 
 # Create your views here.
 
@@ -117,16 +117,20 @@ def my_cart(request):
 
 
 def view_cart(request):
-    #cart_sum = Cart.objects.filter(user=request.user).aggregate(total_price=Sum('item__price', field='item__price * number_of_items')).get('total_price')
-    cart_items1 = AddCart.objects.filter(customer_id=request.session['c_id']).aaggregate(tt_price=sum('product.p_price' , field='product.p_price * qty')) 
-    #cart_items =AddCart.objects.annotate(total_price=sum(F('product.p_price') * F('qty')).get(customer_id=request.session['c_id']))
-    # t_price = []
-    # for item in cart_items1:
-    #     price = item.product.p_price * item.qty
-    #     t_price.append(price)
-    
+    #cart_sum = Cart.objects.filter(user=request.user).aggregate(total_price=Sum('item__price', field='item__price * number_of _items')).get('total_price')
+    #cart_items1 = AddCart.objects.filter(customer_id=request.session['c_id']).aaggregate(tt_price=sum('product.p_price' , 'product.p_price * qty'))
+    #cart_items = AddCart.objects.filter(customer_id=request.session['c_id'])
 
-    return render(request,'customer/my_cart.html',{'cart_items':cart_items1,})
+    cart_items1 =AddCart.objects.annotate(total_price=F('qty') * 3)
+    cart=AddCart.objects.select_related('product')
+    print(cart)
+    tt=[]
+    for i in cart_items1:
+        c=i.product.p_price*i.qty
+        tt.append(c)
+    print(tt)
+
+    return render(request,'customer/my_cart.html',{'cart_items':cart,'tp':tt})
 
 def del_cart_item(reqest,product_id):
     del_item=AddCart.objects.get(product_id=product_id)
