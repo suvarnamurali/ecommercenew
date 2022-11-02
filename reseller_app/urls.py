@@ -14,6 +14,7 @@ urlpatterns = [
     path('history_order',views.order_history, name='order_history'),
     path('password-change',views.change_password, name='change_password'),
     path('sellerac',views.seller_ac, name='seller-acnt'),
-    path('editac',views.edit_ac, name='edit-acc')
+    path('editac',views.edit_ac, name='edit-acc'),
+    path('s_logot',views.s_logout, name='s_logout'),
     
 ]

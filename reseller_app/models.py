@@ -14,11 +14,11 @@ class Reseller(models.Model):
     password = models.CharField(max_length=30)
     s_pic = models.ImageField(upload_to='reseller/')
 
-# class product(models.Model):
-#     p_name = models.CharField(max_length=30)
-#     seller = models.ForeignKey()
-#     p_number = models.BigIntegerField()
-#     p_details = models.CharField(max_length=300)
-#     p_price = models.BigIntegerField()
-#     p_stock = models.BigIntegerField()
-#     p_image = models.ImageField(upload_to='product/')
+class Product(models.Model):
+    p_name = models.CharField(max_length=30)
+    seller_id = models.ForeignKey(Reseller, on_delete = models.CASCADE)
+    p_number = models.BigIntegerField()
+    p_details = models.CharField(max_length=300)
+    p_price = models.BigIntegerField()
+    p_stock = models.BigIntegerField()
+    p_image = models.ImageField(upload_to='product/')
