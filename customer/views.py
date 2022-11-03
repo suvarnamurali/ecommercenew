@@ -5,7 +5,7 @@ from django.shortcuts import render,redirect
 
 from customer.models import AddCart, Customer
 from reseller_app.models import Product, Reseller
-from django.db.models import F
+from django.db.models import F,Sum
 
 # Create your views here.
 
@@ -76,64 +76,27 @@ def customer_home(request):
                    
     product_list=Product.objects.all() 
     return render(request,'customer/customer_home.html',{'products':product_list})
-    return render(request,'customer/customer_home.html',{'status':status})
-
-# def my_cart(request,product_id):
-#     msg=""
-#     if 'c_id' not in request.session: 
-#         msg="plase login"       
-#         product_detail=Product.objects.get(id=product_id)
-#         return render(request,'customer/product_detail.html',{'product':product_detail,'error':msg})
-#     else:        
-#         cart = AddCart(
-#             product_id = product_id ,
-#             customer_id = request.session['c_id'])
-
-#         product_exist=AddCart.objects.filter(product_id=product_id).exists()
-#         if not product_exist:
-#             cart.save()
-#     return redirect('customer:view_cart') 
+    
 
 
 def my_cart(request):
-    # msg=""
-    # if request.method == "POST":
-    #     p_id=request.POST['pid']
-    #     p_qty=request.POST['qty'] 
-        
-    #     cart = AddCart(
-    #     product_id = p_id ,
-    #     qty=p_qty,
-    #     customer_id = request.session['c_id'])
-
-    #     if 'c_id' not in request.session: 
-    #         msg="plase login"    
-    #         return render(request,'customer/product_detail.html',{'product':product_detail,'error':msg})
-    #     else:  
-    #         product_exist=AddCart.objects.filter(product_id=p_id).exists()
-    #         if not product_exist:
-    #             cart.save()
+    
     return redirect('customer:view_cart') 
 
 
-def view_cart(request):
-    #cart_sum = Cart.objects.filter(user=request.user).aggregate(total_price=Sum('item__price', field='item__price * number_of _items')).get('total_price')
-    #cart_items1 = AddCart.objects.filter(customer_id=request.session['c_id']).aaggregate(tt_price=sum('product.p_price' , 'product.p_price * qty'))
-    #cart_items = AddCart.objects.filter(customer_id=request.session['c_id'])
+def view_cart(request):    
+    cart2=AddCart.objects.annotate(total_price = F('product__p_price') * F('qty'))
+    sum=0
+    for i in cart2:
+        sum=sum+i.total_price
 
-    cart_items1 =AddCart.objects.annotate(total_price=F('qty') * 3)
-    cart=AddCart.objects.select_related('product')
-    print(cart)
-    tt=[]
-    for i in cart_items1:
-        c=i.product.p_price*i.qty
-        tt.append(c)
-    print(tt)
+    #gt=AddCart.objects.aaggregate(grt =Sum( F('product__p_price') * F('qty')))
+    gt=cart2.aaggregate(grt=Sum(F('total_price')))   
 
-    return render(request,'customer/my_cart.html',{'cart_items':cart,'tp':tt})
+    return render(request,'customer/my_cart.html',{'cart_items':cart2,'gt':sum})
 
 def del_cart_item(reqest,product_id):
-    del_item=AddCart.objects.get(product_id=product_id)
+    del_item=AddCart.objects.filter(product_id=product_id,customer_id=reqest.session['c_id'])
     del_item.delete()
     return redirect('customer:view_cart') 
 

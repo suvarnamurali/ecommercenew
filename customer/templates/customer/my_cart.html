@@ -82,9 +82,10 @@
 										
 										<td class="cart-product-sub-total" id="st"><span
 												class="cart-sub-total-price"></span> Rs:{{item.product.p_price}}</td>
-										{%for i in tp%}
-										<td class="cart-product-grand-total"><span	class="cart-grand-total-price"  id="total"> </span>rs{{i.}} </td>		
-										{%endfor%}																	
+									
+									
+										<td class="cart-product-grand-total"><span	class="cart-grand-total-price"  id="total"> </span>Rs:{{item.total_price}} </td>		
+																											
 									</tr>															
 																	
 									{% endfor %}
@@ -116,12 +117,10 @@
 								<thead>
 									<tr>
 										<th>
-											<div class="cart-sub-total">
-												Subtotal<span class="inner-left-md"></span>
-											</div>
+											
 											<div class="cart-grand-total">
 												
-												Grand Total<span class="inner-left-md">${{g_total}}</span>
+												Grand Total<span class="inner-left-md">Rs:{{gt}}</span>
 											</div>
 										</th>
 									</tr>

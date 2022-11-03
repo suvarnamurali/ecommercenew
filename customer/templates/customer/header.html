@@ -80,6 +80,8 @@
                               alert('{{error_msg}}')
                           </script>
                           {% endif %}
+
+                          <!-- sign up customer form -->
                   <div class="tab-pane fade" id="signup">
                     <form class="form-horizontal" method="POST" action="{% url 'customer:home' %}">
                       {% csrf_token %}
@@ -206,7 +208,7 @@
                     </form>
                   </div>
 
-
+                 <!-- seller signup form -->
                   <div class="tab-pane fade" id="seller-signup">
                     <form class="form-horizontal" method="POST">
                       {% csrf_token %}
@@ -215,44 +217,50 @@
                         <!-- name input  -->
 
                         <div class="group">
-                          <input required class="input" name="s_name" type="text"><span
-                            class="highlight"></span><span class="bar"></span>
-                          <label class="label" for="date">Name</label>
+                          <input  class="input" name="s_name" type="text" id="i_s_name">
+                          <span class="highlight"></span><span class="bar"></span>
+                          <span id="s_s_name"></span>
+                          <label class="label" for="name">Name</label>
                         </div>
                         <!-- address  -->
                         <div class="group">
-                          <textarea name="s_address" id="address" cols="50" rows="3" class="input"></textarea><span
+                          <textarea name="s_address" id="i_s_address" cols="50" rows="3" class="input"></textarea><span
                             class="highlight"></span><span class="bar"></span>
+                            <span id="s_s_address"></span>
                           <!-- <input required class="input" type="text"><span class="highlight"></span><span
                             class="bar"></span> -->
                           <label class="label" for="date">Address</label>
                         </div>
                         <!-- Text input email-->
                         <div class="group">
-                          <input required class="input" name="s_email" type="text"><span
+                          <input  class="input" name="s_email" type="text" id="i_s_email"><span
                             class="highlight"></span><span class="bar"></span>
+                            <span id="s_s_email"></span>
                           <label class="label" for="date">Email</label>
                         </div>
 
                         <!-- Password input-->
                         <div class="group">
-                          <input required class="input" name="s_mobile" type="text"><span
+                          <input class="input" name="s_mobile" type="text" id="i_s_mobile"><span
                             class="highlight"></span><span class="bar"></span>
+                            <span id="s_s_mobile"></span>
                           <label class="label" for="date">Mobile</label>
                         </div>
 
                         <!-- account name  -->
                         <div class="group">
-                          <input required class="input" name="s_acholder" type="text"><span
+                          <input  class="input" name="s_acholder" type="text" id="i_s_acname"><span
                             class="highlight"></span><span class="bar"></span>
+                            <span id="s_s_acname"></span>
                           <label class="label" for="date">Account Holder Name</label>
                         </div>
 
                         <!-- account no  -->
 
                         <div class="group">
-                          <input required class="input" name="s_account" type="text"><span
+                          <input  class="input" name="s_account" type="text" id="s_s_acno"><span
                             class="highlight"></span><span class="bar"></span>
+                            <span id="s_s_acno"></span>
                           <label class="label" for="date">Account Number</label>
                         </div>
 
@@ -261,8 +269,9 @@
                         <!-- ifsc  -->
 
                         <div class="group">
-                          <input required class="input" name="s_ifsc" type="text"><span
-                            class="highlight"></span><span class="bar"></span>
+                          <input  class="input" name="s_ifsc" type="text" id="i_s_ifsc"><span
+                            class="highlight"></span><span class="bar" ></span>
+                            <span id="s_s_ifsc"></span>
                           <label class="label" for="date">IFSC</label>
                         </div>
 
@@ -271,8 +280,9 @@
 
 
                         <div class="group">
-                          <input type="file" id="myFile" name="s_pic" class="input"><span
+                          <input type="file" id="myFile" name="s_pic" class="input" ><span
                             class="highlight"></span><span class="bar"></span>
+                            <span id="s_s_image"></span>
                           <label for="" class="lable">Upload Image</label>
 
 
@@ -280,8 +290,9 @@
 
                         <!-- Text input password-->
                         <div class="group">
-                          <input required class="input" name="s_password" type="password"><span
+                          <input  class="input" name="s_password" type="password" id="i_s_pwd"><span
                             class="highlight"></span><span class="bar"></span>
+                            <span id="s_s_pwd"></span>
                           <label class="label" for="date">Password</label>
                         </div>
                         <em>1-8 Characters</em>
@@ -291,7 +302,7 @@
                           <label class="control-label" for="s_signup"></label>
                           <div class="controls">
                             <a href="{% url 'reseller:reseller_home' %}">
-                              <button id="confirmsignup" name="s_signup" class="btn btn-primary btn-block">Sign
+                              <button id="confirmsignup" name="s_signup" class="btn btn-primary btn-block" onclick="s_validation()">Sign
                                 Up</button> 
                             </a>
                             
@@ -307,6 +318,9 @@
           </div>
         </div>
         <!-- seller modal end  -->
+        <script>
+          
+        </script>
         <!-- /.cnt-account -->
 
         <div class="cnt-block">
