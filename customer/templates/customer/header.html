@@ -8,9 +8,12 @@
       <div class="header-top-inner">
         <div class="cnt-account">
           <ul class="list-unstyled">
+            {% if 'c_id' in request.session %}
             <li class="myaccount"><a href="{% url 'customer:my-account' %}"><span>My Account</span></a></li>
             <li class="wishlist"><a href="{% url 'customer:order' %}"><span>My Order</span></a></li>
-            <li class="header_cart hidden-xs"><a href="{%  url 'customer:view_cart' %}"><span>My Cart</span></a></li>
+            <li class="header_cart hidden-xs"><a href="{% url 'customer:cart' %}"><span>My Cart</span></a></li>
+            {% endif %}
+            
             {% if not 'c_id' in request.session %}
             <li> <a href="#signup" data-toggle="modal" data-target=".log-sign">Login</a></li>
 
@@ -173,7 +176,7 @@
                 <div id="myTabContent" class="tab-content">
 
                   <div class="tab-pane fade active in" id="seller-login">
-                    <form class="form-horizontal" method="POST">
+                    <form class="form-horizontal" method="POST" action="{% url 'reseller:reseller_home' %}">
                       {% csrf_token %}
                       <fieldset>
 
@@ -202,6 +205,7 @@
                           <label class="control-label" for="signin"></label>
                           <div class="controls">
                             <button id="signin" name="signin" class="btn btn-primary btn-block">Log In</button>
+                            
                           </div>
                         </div>
                       </fieldset>
@@ -217,50 +221,44 @@
                         <!-- name input  -->
 
                         <div class="group">
-                          <input  class="input" name="s_name" type="text" id="i_s_name">
-                          <span class="highlight"></span><span class="bar"></span>
-                          <span id="s_s_name"></span>
-                          <label class="label" for="name">Name</label>
+                          <input class="input" name="s_name" type="text" id="rs_name"><span
+                            class="highlight"></span><span class="bar"></span><span id="name_rs"></span>
+                          <label class="label" for="date">Name</label>
                         </div>
                         <!-- address  -->
                         <div class="group">
-                          <textarea name="s_address" id="i_s_address" cols="50" rows="3" class="input"></textarea><span
-                            class="highlight"></span><span class="bar"></span>
-                            <span id="s_s_address"></span>
+                          <textarea name="s_address" id="rs_address" cols="50" rows="3" class="input"></textarea><span
+                            class="highlight"></span><span class="bar"></span><span id="address_rs"></span>
                           <!-- <input required class="input" type="text"><span class="highlight"></span><span
                             class="bar"></span> -->
                           <label class="label" for="date">Address</label>
                         </div>
                         <!-- Text input email-->
                         <div class="group">
-                          <input  class="input" name="s_email" type="text" id="i_s_email"><span
-                            class="highlight"></span><span class="bar"></span>
-                            <span id="s_s_email"></span>
+                          <input  class="input" name="s_email" type="text" id="rs_mail"><span
+                            class="highlight"></span><span class="bar"></span><span id="mail_rs"></span>
                           <label class="label" for="date">Email</label>
                         </div>
 
                         <!-- Password input-->
                         <div class="group">
-                          <input class="input" name="s_mobile" type="text" id="i_s_mobile"><span
-                            class="highlight"></span><span class="bar"></span>
-                            <span id="s_s_mobile"></span>
+                          <input required class="input" name="s_mobile" type="text" id="rs_mobile"><span
+                            class="highlight"></span><span class="bar"></span><span id="mobile_rs"></span>
                           <label class="label" for="date">Mobile</label>
                         </div>
 
                         <!-- account name  -->
                         <div class="group">
-                          <input  class="input" name="s_acholder" type="text" id="i_s_acname"><span
-                            class="highlight"></span><span class="bar"></span>
-                            <span id="s_s_acname"></span>
+                          <input class="input" name="s_acholder" type="text" id="rs_acholder"><span
+                            class="highlight"></span><span class="bar"></span><span id="acholder_rs"></span>
                           <label class="label" for="date">Account Holder Name</label>
                         </div>
 
                         <!-- account no  -->
 
                         <div class="group">
-                          <input  class="input" name="s_account" type="text" id="s_s_acno"><span
-                            class="highlight"></span><span class="bar"></span>
-                            <span id="s_s_acno"></span>
+                          <input class="input" name="s_account" type="text" id="rs_ac_no"><span
+                            class="highlight"></span><span class="bar"></span><span id="ac_no_rs"></span>
                           <label class="label" for="date">Account Number</label>
                         </div>
 
@@ -269,9 +267,8 @@
                         <!-- ifsc  -->
 
                         <div class="group">
-                          <input  class="input" name="s_ifsc" type="text" id="i_s_ifsc"><span
-                            class="highlight"></span><span class="bar" ></span>
-                            <span id="s_s_ifsc"></span>
+                          <input class="input" name="s_ifsc" type="text" id="rs_ifsc"><span
+                            class="highlight"></span><span class="bar"></span><span id="ifsc_rs"></span>
                           <label class="label" for="date">IFSC</label>
                         </div>
 
@@ -280,9 +277,8 @@
 
 
                         <div class="group">
-                          <input type="file" id="myFile" name="s_pic" class="input" ><span
-                            class="highlight"></span><span class="bar"></span>
-                            <span id="s_s_image"></span>
+                          <input type="file" id="myFile" name="s_pic" class="input" id="rs_pic"><span
+                            class="highlight"></span><span class="bar"></span><span id="pic_rs"></span>
                           <label for="" class="lable">Upload Image</label>
 
 
@@ -290,9 +286,8 @@
 
                         <!-- Text input password-->
                         <div class="group">
-                          <input  class="input" name="s_password" type="password" id="i_s_pwd"><span
-                            class="highlight"></span><span class="bar"></span>
-                            <span id="s_s_pwd"></span>
+                          <input class="input" name="s_password" type="password" id="rs_password"><span
+                            class="highlight"></span><span class="bar"></span><span id="password_rs"></span>
                           <label class="label" for="date">Password</label>
                         </div>
                         <em>1-8 Characters</em>
@@ -301,11 +296,7 @@
                         <div class="control-group">
                           <label class="control-label" for="s_signup"></label>
                           <div class="controls">
-                            <a href="{% url 'reseller:reseller_home' %}">
-                              <button id="confirmsignup" name="s_signup" class="btn btn-primary btn-block" onclick="s_validation()">Sign
-                                Up</button> 
-                            </a>
-                            
+                          <button id="confirmsignup" name="s_signup" class="btn btn-primary btn-block" type="submit" onclick="return s_validation()">SignUp</button> 
                           </div>
                         </div>
                       </fieldset>
@@ -488,11 +479,12 @@
                 <li class="dropdown"> <a href="contact.html">Jewellery</a> </li>
                 <li class="dropdown"> <a href="contact.html">Shoes</a> </li>
                 <li class="dropdown"> <a href="contact.html">Kids & Girls</a> </li>
-                {% if not 'c_id' in request.session %}
-                </li>
-                <li class="dropdown  navbar-right special-menu"> <a href="#signup" data-toggle="modal"
+              </li>
+                
+              {% if not 'c_id' in request.session %}
+             <li class="dropdown  navbar-right special-menu"> <a href="#signup" data-toggle="modal"
                     data-target=".seller-log">Become a seller</a> </li>
-                  {% endif %}
+              {% endif %}
               </ul>
 
 

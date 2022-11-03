@@ -1,6 +1,3 @@
- 
-from itertools import product
-from urllib import request
 from django.shortcuts import render,redirect
 
 from customer.models import AddCart, Customer
@@ -41,7 +38,7 @@ def customer_home(request):
                  
             except:
                 error_msg = 'Invalid Username Or Password'
-                return render(request,'customer/customer_home.html',{'error_msg':error_msg})#customer end
+                return render(request,'customer/customer_home.html',{'error_msg':error_msg})#customer end login and signup completed
      
    
         if 's_signup' in request.POST:
