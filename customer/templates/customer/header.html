@@ -8,15 +8,14 @@
       <div class="header-top-inner">
         <div class="cnt-account">
           <ul class="list-unstyled">
-            {% if 'c_id' in request.session %}
+            {% if  'c_id' in request.session %}
             <li class="myaccount"><a href="{% url 'customer:my-account' %}"><span>My Account</span></a></li>
             <li class="wishlist"><a href="{% url 'customer:order' %}"><span>My Order</span></a></li>
-            <li class="header_cart hidden-xs"><a href="{% url 'customer:cart' %}"><span>My Cart</span></a></li>
+            <li class="header_cart hidden-xs"><a href="{%  url 'customer:view_cart' %}"><span>My Cart</span></a></li>
             {% endif %}
-            
             {% if not 'c_id' in request.session %}
             <li> <a href="#signup" data-toggle="modal" data-target=".log-sign">Login</a></li>
-
+           
             {% else %}
             <li> <a href="{% url 'customer:c_logout' %}" data-toggle="" data-target="">Logout</a></li>
 
