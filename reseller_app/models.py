@@ -13,6 +13,7 @@ class Reseller(models.Model):
     s_acholdername = models.CharField(max_length=50)
     password = models.CharField(max_length=30)
     s_pic = models.ImageField(upload_to='reseller/')
+    s_status = models.IntegerField(default=1)
 
 class Product(models.Model):
     p_name = models.CharField(max_length=30)
