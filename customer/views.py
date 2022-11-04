@@ -48,13 +48,15 @@ def customer_home(request):
             reseller = Reseller(s_name = s_name,email = s_email,mobile = s_mobile,address = s_address,account_no =s_account,ifsc = s_ifsc,
             s_acholdername = s_acholder,password = s_password,s_pic = s_pic)
             reseller.save() 
+
         if 'signin' in request.POST:
             email = request.POST['s_mail']
             passwd = request.POST['s_pass']
             print('seller')
             try:
                 reseller = Reseller.objects.get(email = email,password = passwd)
-                request.session['s_id'] = reseller.id               
+                request.session['s_id'] =3
+                print('tesstttt')             
                 return redirect("reseller:reseller_home")
             except:
                 error_msg = 'Invalid Username Or Password'

@@ -23,4 +23,4 @@ class Product(models.Model):
     p_price = models.BigIntegerField()
     p_stock = models.BigIntegerField()
     p_image = models.ImageField(upload_to='product/')
-    p_date = models.DateField()
+    

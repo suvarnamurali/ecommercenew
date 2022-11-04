@@ -10,6 +10,6 @@ urlpatterns = [
     path('customers-list',views.customers_list,name='list'),
     path('registered_resellers',views.registered_resellers,name='registered'),
     path('password_change',views.change_password,name='change-password'),
-    
+    # path('r_approve/<int:reseller_id>',views.r_approve,name='r_approve'),   
     
 ]
