@@ -19,16 +19,17 @@
             <th>Status</th>
             
         </tr>
-        {% for reseller in reseller_list}
+        {% for reseller in reseller_list %}
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{forloop.counter}}</td>
+            <td>{{reseller.s_name}}</td>
+            <td>{{reseller.email}}</td>
+            <td>{{reseller.mobile}}</td>
+            <td>{{reseller.address}}</td>
+            <td>{{reseller.account_no}}</td>
+            <td>{{reseller.s_pic}}</td>
+            <td>{{reseller.s_status}}</td>
+            <td><a href="{% url 'ecom_admin:r_approve',{{reseller.id}} %}" class="btn">Approve</a></td>
              
         </tr>
 

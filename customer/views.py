@@ -54,7 +54,8 @@ def customer_home(request):
             print('seller')
             try:
                 reseller = Reseller.objects.get(email = email,password = passwd)
-                request.session['s_id'] = reseller.id               
+                request.session['s_id'] = reseller.id 
+                print("test")              
                 return redirect("reseller:reseller_home")
             except:
                 error_msg = 'Invalid Username Or Password'

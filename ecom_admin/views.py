@@ -23,6 +23,9 @@ def change_password(request):
 def admin_login(request):
     return render(request,'ecom_admin/adminlogin.html')
 
+def r_approve(request,reseller_id):
+    reseller1= Reseller.objects.get(id=reseller_id).update(s_status=1)
+
 
 
 
