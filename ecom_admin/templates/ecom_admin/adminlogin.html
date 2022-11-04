@@ -9,12 +9,12 @@
 </head>
 <body>
     <div id="conteiner">
-    <form action="" method="GET" id="form">
+    <form action="{% url 'ecom_admin:admin_home' %}" method="POST" id="form">
         <!-- <p>Login</p> -->
         <label for="username">Username</label><br>
-        <input type="text" id="email" name="username" required><br>
+        <input type="text" id="a_email" name="username" required><br>
         <label for="password">Password</label><br>
-        <input type="password" id="password" name="password"><br><br>
+        <input type="password" id="a_password" name="password"><br><br>
         <!-- <label for="remember" class="remember">Remember me</label>
         <input type="checkbox" id="remember" name="Remember"> -->
         <!-- <a href="{% url 'ecom_admin:admin_home' %}"><button type="">Login</button></a> -->

@@ -10,41 +10,44 @@
     <table class="table table-hover  table-striped">
         <tr>
             <th>Sl.No</th>
-            <th>Order Date</th>
-            <th>Product No</th>
-            <th>Product Name</th>
-            <th>Customer Name</th>
-            <th>Mobile No</th>
-            <th>Shipping Address</th>
-            <th>Qty</th>
-            <th>Total Amount</th>
+            <th>Reseller Name</th>
+            <th>Email id</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Account No</th>
+            <th>Photo</th>
+            <th>Status</th>
             
         </tr>
+        {% for reseller in reseller_list %}
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{forloop.counter}}</td>
+            <td>{{reseller.s_name}}</td>
+            <td>{{reseller.email}}</td>
+            <td>{{reseller.mobile}}</td>
+            <td>{{reseller.address}}</td>
+            <td>{{reseller.account_no}}</td>
+            <td>{{reseller.s_pic}}</td>
+            <td>{{reseller.s_status}}</td>
+            <td><a href="{% url 'ecom_admin:r_approve',{{reseller.id}} %}" class="btn">Approve</a></td>
              
         </tr>
+
+        {% for student in student_list %} 
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td> <img src="{{student.student_profile_picture.url}}" alt="" height="100px" width="100px"> </td>
+                        <td>{{student.student_name| upper}}</td>
+                        <td>{{student.student_email}}</td>
+                        <td>{{student.student_dob}}</td>
+                        <td>{{student.student_phone_number}}</td>
+                        <td>{{student.student_place}}</td>
+                        <td>{{student.s_parent_name}}</td>
+                        <td>{{student.student_password}}</td>
+                    </tr>
+                    {% endfor %}
        
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-             
-        </tr>
+     
       </table> 
 
 </form>

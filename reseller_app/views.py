@@ -2,10 +2,13 @@ from django.shortcuts import render,redirect
 
 from reseller_app.models import Product, Reseller
 
+from reseller_app.models import Reseller
+
 # Create your views here.
 
 def reseller_home(request):
-    return render(request,'reseller_app/reseller_home.html')
+    reseller = Reseller.objects.get(id = request.session['s_id'])
+    return render(request,'reseller_app/reseller_home.html',{'seller_data':reseller})
 
 def product_catalogue(request):
     product_list=Product.objects.filter(seller_id=request.session['s_id']) 
